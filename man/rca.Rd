@@ -101,10 +101,14 @@ chunk17 = sample(201L:300L, 3L)
 chunk18 = sample(201L:300L, 3L)
 chunk19 = sample(201L:300L, 3L)
 chunk20 = sample(201L:300L, 3L)
-chks = x[c(chunk1, chunk2, chunk3, chunk4, chunk5, chunk6, chunk7, chunk8, chunk9, chunk10,
-           chunk11, chunk12, chunk13, chunk14, chunk15, chunk16, chunk17, chunk18, chunk19, chunk20), ]
-           chunks = list(chunk1, chunk2, chunk3, chunk4, chunk5, chunk6, chunk7, chunk8, chunk9, chunk10,
-                         chunk11, chunk12, chunk13, chunk14, chunk15, chunk16, chunk17, chunk18, chunk19, chunk20)
+chks = x[c(chunk1, chunk2, chunk3, chunk4, chunk5,
+           chunk6, chunk7, chunk8, chunk9, chunk10,
+           chunk11, chunk12, chunk13, chunk14, chunk15,
+           chunk16, chunk17, chunk18, chunk19, chunk20), ]
+           chunks = list(chunk1, chunk2, chunk3, chunk4, chunk5,
+           chunk6, chunk7, chunk8, chunk9, chunk10,
+           chunk11, chunk12, chunk13, chunk14, chunk15,
+           chunk16, chunk17, chunk18, chunk19, chunk20)
 
 # Make 'chunklet' vector to feed the chunks argument
 chunksvec = rep(-1L, nrow(x))

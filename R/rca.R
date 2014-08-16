@@ -60,7 +60,7 @@
 #' Learning Distance Functions using Equivalence Relations.
 #' \emph{Proceedings of 20th International Conference on
 #' Machine Learning (ICML2003)}
-#' 
+#'
 #' @examples
 #' \donttest{
 #' set.seed(42)
@@ -73,16 +73,16 @@
 #' x3 = mvrnorm(k, mu = c(8, -6), matrix(c(15, 1, 2, 10), ncol = 2))
 #' x = as.data.frame(rbind(x1, x2, x3))  # predictor
 #' y = gl(n, k)  # response
-#' 
+#'
 #' # The fully labeled data set with 3 classes
 #' plot(x[, 1L], x[, 2L], bg = c("#E41A1C", "#377EB8", "#4DAF4A")[y], 
 #'      pch = rep(c(22, 21, 25), each = k))
 #'      Sys.sleep(2)
-#'      
+#'
 #' # Same data unlabeled; clearly the class structure is less evident
 #' plot(x[, 1L], x[, 2L])
 #' Sys.sleep(2)
-#' 
+#'
 #' # Manually generating synthetic chunklets
 #' chunk1 = sample(1L:100L, 3L)
 #' chunk2 = sample(1L:100L, 3L)
@@ -104,11 +104,15 @@
 #' chunk18 = sample(201L:300L, 3L)
 #' chunk19 = sample(201L:300L, 3L)
 #' chunk20 = sample(201L:300L, 3L)
-#' chks = x[c(chunk1, chunk2, chunk3, chunk4, chunk5, chunk6, chunk7, chunk8, chunk9, chunk10, 
-#'            chunk11, chunk12, chunk13, chunk14, chunk15, chunk16, chunk17, chunk18, chunk19, chunk20), ]
-#'            chunks = list(chunk1, chunk2, chunk3, chunk4, chunk5, chunk6, chunk7, chunk8, chunk9, chunk10, 
-#'                          chunk11, chunk12, chunk13, chunk14, chunk15, chunk16, chunk17, chunk18, chunk19, chunk20)
-#'                          
+#' chks = x[c(chunk1, chunk2, chunk3, chunk4, chunk5, 
+#'            chunk6, chunk7, chunk8, chunk9, chunk10, 
+#'            chunk11, chunk12, chunk13, chunk14, chunk15, 
+#'            chunk16, chunk17, chunk18, chunk19, chunk20), ]
+#'            chunks = list(chunk1, chunk2, chunk3, chunk4, chunk5, 
+#'            chunk6, chunk7, chunk8, chunk9, chunk10, 
+#'            chunk11, chunk12, chunk13, chunk14, chunk15, 
+#'            chunk16, chunk17, chunk18, chunk19, chunk20)
+#'
 #' # Make 'chunklet' vector to feed the chunks argument
 #' chunksvec = rep(-1L, nrow(x))
 #' for ( i in 1L:length(chunks) ) {
@@ -116,26 +120,26 @@
 #'     chunksvec[chunks[[i]][j]] = i
 #'   }
 #' }
-#' 
+#'
 #' # The chunklets provided to the RCA algorithm
 #' plot(chks[, 1L], chks[, 2L], col = rep(1L:20L, each = 3L), 
 #'      pch = rep(0L:19L, each = 3L))
 #' Sys.sleep(2)
-#' 
+#'
 #' # The RCA suggested transformation of the data
 #' rca(x, chunksvec)$RCA
-#' 
+#'
 #' # The RCA suggested Mahalanobis matrix
 #' rca(x, chunksvec)$B
-#' 
+#'
 #' # Whitening transformation applied to the  chunklets
 #' chkTransformed = as.matrix(chks) %*% rca(x, chunksvec)$RCA
-#' 
+#'
 #' plot(chkTransformed[, 1L], chkTransformed[, 2L], 
 #'      col = rep(1L:20L, each = 3L),
 #'      pch = rep(0L:19L, each = 3L))
 #' Sys.sleep(2)
-#' 
+#'
 #' # The origin data after applying the RCA transformation
 #' xnew = rca(x, chunksvec)$newX
 #' plot(xnew[, 1L], xnew[, 2L], 
