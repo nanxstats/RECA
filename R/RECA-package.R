@@ -3,7 +3,7 @@
 #' The RECA package performs Relevant Component Analysis (RCA).
 #'
 #' \tabular{ll}{ Package: \tab RECA\cr Type: \tab Package\cr
-#' Version: \tab 1.0\cr License: \tab GPL (>= 2)\cr }
+#' Version: \tab 1.1\cr License: \tab GPL (>= 2)\cr }
 #'
 #' @name RECA-package
 #' @docType package

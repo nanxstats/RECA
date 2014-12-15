@@ -1,8 +1,8 @@
 Package: RECA
 Type: Package
 Title: Relevant Component Analysis for Supervised Distance Metric Learning
-Version: 1.0
-Date: 2014-06-24
+Version: 1.1
+Date: 2014-12-16
 Author: Nan Xiao <road2stat@gmail.com>
 Maintainer: Nan Xiao <road2stat@gmail.com>
 Description: Relevant Component Analysis (RCA) tries to find a linear
@@ -11,3 +11,5 @@ Description: Relevant Component Analysis (RCA) tries to find a linear
 License: GPL (>= 2)
 URL: https://github.com/road2stat/RECA
 BugReports: https://github.com/road2stat/RECA/issues
+Suggests:
+    MASS
