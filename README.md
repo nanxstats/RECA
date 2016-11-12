@@ -1,17 +1,27 @@
 # RECA
 
-RECA: Relevant Component Analysis for Supervised Distance Metric Learning
+[![Build Status](https://travis-ci.org/road2stat/RECA.svg?branch=master)](https://travis-ci.org/road2stat/RECA)
+[![CRAN Version](http://www.r-pkg.org/badges/version/RECA)](https://cran.r-project.org/package=RECA)
+[![Downloads from the RStudio CRAN mirror](http://cranlogs.r-pkg.org/badges/RECA)](http://cranlogs.r-pkg.org/badges/RECA)
+
+Relevant Component Analysis (RCA) for supervised distance metric learning.
 
 ## Installation
 
-To install the RECA package in R, simply type
+Install `RECA` from CRAN:
 
-    install.packages("RECA")
+```r
+install.packages("RECA")
+```
+
+Or try the development version on GitHub:
+
+```r
+# install.packages("devtools")
+devtools::install_github("road2stat/RECA")
+```
 
 ## Links
 
-  * CRAN Page: http://cran.r-project.org/web/packages/RECA/
-
-  * Track Devel: https://github.com/road2stat/RECA
-
-  * Report Bugs: https://github.com/road2stat/RECA/issues
+  * CRAN: https://cran.r-project.org/package=RECA
+  * GitHub: https://github.com/road2stat/RECA
