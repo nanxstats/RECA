@@ -64,7 +64,7 @@
 #' Machine Learning (ICML2003)}
 #'
 #' @examples
-#' library("MASS")  # generate synthetic MVN data
+#' library("MASS")  # generate synthetic multivariate normal data
 #' set.seed(42)
 #' k = 100L         # sample size of each class
 #' n = 3L           # specify how many classes
@@ -73,16 +73,16 @@
 #' x2 = mvrnorm(k, mu = c(0, 0),  matrix(c(15, 0.5, 2, 10), ncol = 2))
 #' x3 = mvrnorm(k, mu = c(8, -6), matrix(c(15, 1, 2, 10),   ncol = 2))
 #' x = as.data.frame(rbind(x1, x2, x3))  # predictor
-#' y = gl(n, k)  # response
+#' y = gl(n, k)                          # response
 #'
-#' # The fully labeled data set with 3 classes
+#' # fully labeled data set with 3 classes
 #' plot(x[, 1L], x[, 2L], bg = c("#E41A1C", "#377EB8", "#4DAF4A")[y],
 #'      pch = rep(c(22, 21, 25), each = k))
 #'
-#' # Same data unlabeled; clearly the class structure is less evident
+#' # same data unlabeled; clearly the class structure is less evident
 #' plot(x[, 1L], x[, 2L])
 #'
-#' # Manually generating synthetic chunklets
+#' # manually generating synthetic chunklets
 #' chunk1 = sample(1L:100L, 3L)
 #' chunk2 = sample(1L:100L, 3L)
 #' chunk3 = sample(1L:100L, 3L)
@@ -112,7 +112,7 @@
 #'               chunk11, chunk12, chunk13, chunk14, chunk15,
 #'               chunk16, chunk17, chunk18, chunk19, chunk20)
 #'
-#' # Make "chunklet" vector to feed the chunks argument
+#' # make "chunklet" vector to feed the chunks argument
 #' chunksvec = rep(-1L, nrow(x))
 #' for ( i in 1L:length(chunks) ) {
 #'   for ( j in 1L:length(chunks[[i]]) ) {
@@ -120,7 +120,7 @@
 #'   }
 #' }
 #'
-#' # Chunklets for the RCA algorithm
+#' # chunklets for the RCA algorithm
 #' plot(chks[, 1L], chks[, 2L], col = rep(1L:20L, each = 3L),
 #'      pch = rep(0L:19L, each = 3L))
 #'
@@ -130,14 +130,14 @@
 #' # RCA suggested Mahalanobis matrix
 #' rca(x, chunksvec)$B
 #'
-#' # Whitening transformation applied to the  chunklets
+#' # whitening transformation applied to the  chunklets
 #' chkTransformed = as.matrix(chks) %*% rca(x, chunksvec)$RCA
 #'
 #' plot(chkTransformed[, 1L], chkTransformed[, 2L],
 #'      col = rep(1L:20L, each = 3L),
 #'      pch = rep(0L:19L, each = 3L))
 #'
-#' # Origin data after applying RCA transformation
+#' # original data after applying RCA transformation
 #' xnew = rca(x, chunksvec)$newX
 #' plot(xnew[, 1L], xnew[, 2L],
 #'      bg = c("#E41A1C", "#377EB8", "#4DAF4A")[gl(n, k)],
@@ -208,6 +208,7 @@ rca = function(x, chunks, useD = NULL) {
 
   B = RCA %*% t(RCA)
 
-  return(list('B' = B, 'RCA' = RCA, 'newX' = newX))
+  res = list('B' = B, 'RCA' = RCA, 'newX' = newX)
+  res
 
 }
