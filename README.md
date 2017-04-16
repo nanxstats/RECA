@@ -24,6 +24,6 @@ devtools::install_github("road2stat/RECA")
 
 ## Links
 
-  * Website: https://nanx.me/RECA/
-  * CRAN: https://cran.r-project.org/package=RECA
-  * GitHub: https://github.com/road2stat/RECA
+- Website: https://nanx.me/RECA/
+- CRAN: https://cran.r-project.org/package=RECA
+- GitHub: https://github.com/road2stat/RECA

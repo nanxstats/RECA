@@ -1,5 +1,6 @@
 #' Relevant Component Analysis
 #'
+#' @description
 #' \code{rca} performs relevant component analysis (RCA) for the given data.
 #' It takes a data set and a set of positive constraints as arguments
 #' and returns a linear transformation of the data space into better
@@ -12,10 +13,10 @@
 #' @param x \code{n * d} matrix or data frame of original data.
 #'
 #' @param chunks a vector of size \code{N} describing the chunklets:
-#'          \code{-1} in the \code{i}-th place says that point \code{i} does not
-#'          belong to any chunklet; integer \code{j} in place \code{i} says
-#'          that point \code{i} belongs to chunklet \code{j};
-#'          The chunklets indexes should be \code{1:number-of-chunklets}.
+#' \code{-1} in the \code{i}-th place says that point \code{i} does not
+#' belong to any chunklet; integer \code{j} in place \code{i} says
+#' that point \code{i} belongs to chunklet \code{j};
+#' The chunklets indexes should be \code{1:number-of-chunklets}.
 #'
 #' @param useD optional. When not given, RCA is done in the
 #' original dimension and \code{B} is full rank. When \code{useD} is given,
@@ -51,7 +52,7 @@
 #' e.g. \code{{1, 3, 7}} and \code{{4, 6}}, might belong to the
 #' same class and might belong to different classes.
 #'
-#' @author Nan Xiao <\url{http://nanx.me}>
+#' @author Nan Xiao <\url{https://nanx.me}>
 #'
 #' @importFrom stats cov
 #'

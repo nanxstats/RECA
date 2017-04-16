@@ -37,13 +37,12 @@ The data should be transformed by \code{RCA * data}
 It takes a data set and a set of positive constraints as arguments
 and returns a linear transformation of the data space into better
 representation, alternatively, a Mahalanobis metric over the data space.
-}
-\details{
+
 The new representation is known to be optimal in an information
 theoretic sense under a constraint of keeping equivalent data
 points close to each other.
-
-
+}
+\details{
 The three returned objects are just different forms of the same output.
 If one is interested in a Mahalanobis metric over the original data space,
 the first argument is all she/he needs. If a transformation into another
@@ -141,7 +140,7 @@ plot(xnew[, 1L], xnew[, 2L],
      pch = c(rep(22, k), rep(21, k), rep(25, k)))
 }
 \author{
-Nan Xiao <\url{http://nanx.me}>
+Nan Xiao <\url{https://nanx.me}>
 }
 \references{
 Aharon Bar-Hillel, Tomer Hertz, Noam Shental, and Daphna Weinshall (2003).
