@@ -139,13 +139,12 @@ plot(xnew[, 1L], xnew[, 2L],
      bg = c("#E41A1C", "#377EB8", "#4DAF4A")[gl(n, k)],
      pch = c(rep(22, k), rep(21, k), rep(25, k)))
 }
-\author{
-Nan Xiao <\url{https://nanx.me}>
-}
 \references{
 Aharon Bar-Hillel, Tomer Hertz, Noam Shental, and Daphna Weinshall (2003).
 Learning Distance Functions using Equivalence Relations.
 \emph{Proceedings of 20th International Conference on
 Machine Learning (ICML2003)}
 }
-
+\author{
+Nan Xiao <\url{https://nanx.me}>
+}
