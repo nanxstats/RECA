@@ -27,3 +27,7 @@ devtools::install_github("road2stat/RECA")
 - Website: https://nanx.me/RECA/
 - CRAN: https://cran.r-project.org/package=RECA
 - GitHub: https://github.com/road2stat/RECA
+
+## Contribute
+
+To contribute to this project, please take a look at the [Contributing Guidelines](CONTRIBUTING.md) first. Please note that this project is released with a [Contributor Code of Conduct](CONDUCT.md). By participating in this project you agree to abide by its terms.
