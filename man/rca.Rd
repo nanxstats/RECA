@@ -60,65 +60,73 @@ e.g. \code{{1, 3, 7}} and \code{{4, 6}}, might belong to the
 same class and might belong to different classes.
 }
 \examples{
-library("MASS")  # generate synthetic multivariate normal data
+library("MASS") # generate synthetic multivariate normal data
 set.seed(42)
-k = 100L         # sample size of each class
-n = 3L           # specify how many classes
-N = k * n        # total sample size
-x1 = mvrnorm(k, mu = c(-8, 6), matrix(c(15, 1, 2, 10),   ncol = 2))
-x2 = mvrnorm(k, mu = c(0, 0),  matrix(c(15, 0.5, 2, 10), ncol = 2))
-x3 = mvrnorm(k, mu = c(8, -6), matrix(c(15, 1, 2, 10),   ncol = 2))
-x = as.data.frame(rbind(x1, x2, x3))  # predictor
-y = gl(n, k)                          # response
+k <- 100L # sample size of each class
+n <- 3L # specify how many classes
+N <- k * n # total sample size
+x1 <- mvrnorm(k, mu = c(-8, 6), matrix(c(15, 1, 2, 10), ncol = 2))
+x2 <- mvrnorm(k, mu = c(0, 0), matrix(c(15, 0.5, 2, 10), ncol = 2))
+x3 <- mvrnorm(k, mu = c(8, -6), matrix(c(15, 1, 2, 10), ncol = 2))
+x <- as.data.frame(rbind(x1, x2, x3)) # predictor
+y <- gl(n, k) # response
 
 # fully labeled data set with 3 classes
-plot(x[, 1L], x[, 2L], bg = c("#E41A1C", "#377EB8", "#4DAF4A")[y],
-     pch = rep(c(22, 21, 25), each = k))
+plot(x[, 1L], x[, 2L],
+  bg = c("#E41A1C", "#377EB8", "#4DAF4A")[y],
+  pch = rep(c(22, 21, 25), each = k)
+)
 
 # same data unlabeled; clearly the class structure is less evident
 plot(x[, 1L], x[, 2L])
 
 # manually generating synthetic chunklets
-chunk1 = sample(1L:100L, 3L)
-chunk2 = sample(1L:100L, 3L)
-chunk3 = sample(1L:100L, 3L)
-chunk4 = sample(1L:100L, 3L)
-chunk5 = sample(1L:100L, 3L)
-chunk6 = sample(1L:100L, 3L)
-chunk7 = sample(101L:200L, 3L)
-chunk8 = sample(101L:200L, 3L)
-chunk9 = sample(101L:200L, 3L)
-chunk10 = sample(101L:200L, 3L)
-chunk11 = sample(101L:200L, 3L)
-chunk12 = sample(101L:200L, 3L)
-chunk13 = sample(101L:200L, 3L)
-chunk14 = sample(101L:200L, 3L)
-chunk15 = sample(201L:300L, 3L)
-chunk16 = sample(201L:300L, 3L)
-chunk17 = sample(201L:300L, 3L)
-chunk18 = sample(201L:300L, 3L)
-chunk19 = sample(201L:300L, 3L)
-chunk20 = sample(201L:300L, 3L)
-chks = x[c(chunk1, chunk2, chunk3, chunk4, chunk5,
-           chunk6, chunk7, chunk8, chunk9, chunk10,
-           chunk11, chunk12, chunk13, chunk14, chunk15,
-           chunk16, chunk17, chunk18, chunk19, chunk20), ]
-chunks = list(chunk1, chunk2, chunk3, chunk4, chunk5,
-              chunk6, chunk7, chunk8, chunk9, chunk10,
-              chunk11, chunk12, chunk13, chunk14, chunk15,
-              chunk16, chunk17, chunk18, chunk19, chunk20)
+chunk1 <- sample(1L:100L, 3L)
+chunk2 <- sample(1L:100L, 3L)
+chunk3 <- sample(1L:100L, 3L)
+chunk4 <- sample(1L:100L, 3L)
+chunk5 <- sample(1L:100L, 3L)
+chunk6 <- sample(1L:100L, 3L)
+chunk7 <- sample(101L:200L, 3L)
+chunk8 <- sample(101L:200L, 3L)
+chunk9 <- sample(101L:200L, 3L)
+chunk10 <- sample(101L:200L, 3L)
+chunk11 <- sample(101L:200L, 3L)
+chunk12 <- sample(101L:200L, 3L)
+chunk13 <- sample(101L:200L, 3L)
+chunk14 <- sample(101L:200L, 3L)
+chunk15 <- sample(201L:300L, 3L)
+chunk16 <- sample(201L:300L, 3L)
+chunk17 <- sample(201L:300L, 3L)
+chunk18 <- sample(201L:300L, 3L)
+chunk19 <- sample(201L:300L, 3L)
+chunk20 <- sample(201L:300L, 3L)
+chks <- x[c(
+  chunk1, chunk2, chunk3, chunk4, chunk5,
+  chunk6, chunk7, chunk8, chunk9, chunk10,
+  chunk11, chunk12, chunk13, chunk14, chunk15,
+  chunk16, chunk17, chunk18, chunk19, chunk20
+), ]
+chunks <- list(
+  chunk1, chunk2, chunk3, chunk4, chunk5,
+  chunk6, chunk7, chunk8, chunk9, chunk10,
+  chunk11, chunk12, chunk13, chunk14, chunk15,
+  chunk16, chunk17, chunk18, chunk19, chunk20
+)
 
 # make "chunklet" vector to feed the chunks argument
-chunksvec = rep(-1L, nrow(x))
-for ( i in 1L:length(chunks) ) {
-  for ( j in 1L:length(chunks[[i]]) ) {
-    chunksvec[chunks[[i]][j]] = i
+chunksvec <- rep(-1L, nrow(x))
+for (i in 1L:length(chunks)) {
+  for (j in 1L:length(chunks[[i]])) {
+    chunksvec[chunks[[i]][j]] <- i
   }
 }
 
 # chunklets for the RCA algorithm
-plot(chks[, 1L], chks[, 2L], col = rep(1L:20L, each = 3L),
-     pch = rep(0L:19L, each = 3L))
+plot(chks[, 1L], chks[, 2L],
+  col = rep(1L:20L, each = 3L),
+  pch = rep(0L:19L, each = 3L)
+)
 
 # RCA suggested transformation of the data
 rca(x, chunksvec)$RCA
@@ -127,17 +135,19 @@ rca(x, chunksvec)$RCA
 rca(x, chunksvec)$B
 
 # whitening transformation applied to the  chunklets
-chkTransformed = as.matrix(chks) \%*\% rca(x, chunksvec)$RCA
+chkTransformed <- as.matrix(chks) \%*\% rca(x, chunksvec)$RCA
 
 plot(chkTransformed[, 1L], chkTransformed[, 2L],
-     col = rep(1L:20L, each = 3L),
-     pch = rep(0L:19L, each = 3L))
+  col = rep(1L:20L, each = 3L),
+  pch = rep(0L:19L, each = 3L)
+)
 
 # original data after applying RCA transformation
-xnew = rca(x, chunksvec)$newX
+xnew <- rca(x, chunksvec)$newX
 plot(xnew[, 1L], xnew[, 2L],
-     bg = c("#E41A1C", "#377EB8", "#4DAF4A")[gl(n, k)],
-     pch = c(rep(22, k), rep(21, k), rep(25, k)))
+  bg = c("#E41A1C", "#377EB8", "#4DAF4A")[gl(n, k)],
+  pch = c(rep(22, k), rep(21, k), rep(25, k))
+)
 }
 \references{
 Aharon Bar-Hillel, Tomer Hertz, Noam Shental, and Daphna Weinshall (2003).
