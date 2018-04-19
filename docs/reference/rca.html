@@ -187,49 +187,22 @@ Machine Learning (ICML2003)</em></p>
 <span class='no'>x1</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/MASS/topics/mvrnorm'>mvrnorm</a></span>(<span class='no'>k</span>, <span class='kw'>mu</span> <span class='kw'>=</span> <span class='fu'>c</span>(-<span class='fl'>8</span>, <span class='fl'>6</span>), <span class='fu'>matrix</span>(<span class='fu'>c</span>(<span class='fl'>15</span>, <span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>10</span>), <span class='kw'>ncol</span> <span class='kw'>=</span> <span class='fl'>2</span>))
 <span class='no'>x2</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/MASS/topics/mvrnorm'>mvrnorm</a></span>(<span class='no'>k</span>, <span class='kw'>mu</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>0</span>, <span class='fl'>0</span>), <span class='fu'>matrix</span>(<span class='fu'>c</span>(<span class='fl'>15</span>, <span class='fl'>0.5</span>, <span class='fl'>2</span>, <span class='fl'>10</span>), <span class='kw'>ncol</span> <span class='kw'>=</span> <span class='fl'>2</span>))
 <span class='no'>x3</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/MASS/topics/mvrnorm'>mvrnorm</a></span>(<span class='no'>k</span>, <span class='kw'>mu</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>8</span>, -<span class='fl'>6</span>), <span class='fu'>matrix</span>(<span class='fu'>c</span>(<span class='fl'>15</span>, <span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>10</span>), <span class='kw'>ncol</span> <span class='kw'>=</span> <span class='fl'>2</span>))
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>as.data.frame</span>(<span class='fu'>rbind</span>(<span class='no'>x1</span>, <span class='no'>x2</span>, <span class='no'>x3</span>)) <span class='co'># predictor</span>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>as.data.frame</span>(<span class='fu'>rbind</span>(<span class='no'>x1</span>, <span class='no'>x2</span>, <span class='no'>x3</span>)) <span class='co'># predictors</span>
 <span class='no'>y</span> <span class='kw'>&lt;-</span> <span class='fu'>gl</span>(<span class='no'>n</span>, <span class='no'>k</span>) <span class='co'># response</span>
 
 <span class='co'># fully labeled data set with 3 classes</span>
+<span class='co'># need to use a line in 2D to classify</span>
 <span class='fu'>plot</span>(<span class='no'>x</span>[, <span class='fl'>1L</span>], <span class='no'>x</span>[, <span class='fl'>2L</span>],
   <span class='kw'>bg</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"#E41A1C"</span>, <span class='st'>"#377EB8"</span>, <span class='st'>"#4DAF4A"</span>)[<span class='no'>y</span>],
   <span class='kw'>pch</span> <span class='kw'>=</span> <span class='fu'>rep</span>(<span class='fu'>c</span>(<span class='fl'>22</span>, <span class='fl'>21</span>, <span class='fl'>25</span>), <span class='kw'>each</span> <span class='kw'>=</span> <span class='no'>k</span>)
 )</div><div class='img'><img src='rca-1.png' alt='' width='700' height='433' /></div><div class='input'>
-<span class='co'># same data unlabeled; clearly the class structure is less evident</span>
-<span class='fu'>plot</span>(<span class='no'>x</span>[, <span class='fl'>1L</span>], <span class='no'>x</span>[, <span class='fl'>2L</span>])</div><div class='img'><img src='rca-2.png' alt='' width='700' height='433' /></div><div class='input'>
-<span class='co'># manually generating synthetic chunklets</span>
-<span class='no'>chunk1</span> <span class='kw'>&lt;-</span> <span class='fu'>sample</span>(<span class='fl'>1L</span>:<span class='fl'>100L</span>, <span class='fl'>3L</span>)
-<span class='no'>chunk2</span> <span class='kw'>&lt;-</span> <span class='fu'>sample</span>(<span class='fl'>1L</span>:<span class='fl'>100L</span>, <span class='fl'>3L</span>)
-<span class='no'>chunk3</span> <span class='kw'>&lt;-</span> <span class='fu'>sample</span>(<span class='fl'>1L</span>:<span class='fl'>100L</span>, <span class='fl'>3L</span>)
-<span class='no'>chunk4</span> <span class='kw'>&lt;-</span> <span class='fu'>sample</span>(<span class='fl'>1L</span>:<span class='fl'>100L</span>, <span class='fl'>3L</span>)
-<span class='no'>chunk5</span> <span class='kw'>&lt;-</span> <span class='fu'>sample</span>(<span class='fl'>1L</span>:<span class='fl'>100L</span>, <span class='fl'>3L</span>)
-<span class='no'>chunk6</span> <span class='kw'>&lt;-</span> <span class='fu'>sample</span>(<span class='fl'>1L</span>:<span class='fl'>100L</span>, <span class='fl'>3L</span>)
-<span class='no'>chunk7</span> <span class='kw'>&lt;-</span> <span class='fu'>sample</span>(<span class='fl'>101L</span>:<span class='fl'>200L</span>, <span class='fl'>3L</span>)
-<span class='no'>chunk8</span> <span class='kw'>&lt;-</span> <span class='fu'>sample</span>(<span class='fl'>101L</span>:<span class='fl'>200L</span>, <span class='fl'>3L</span>)
-<span class='no'>chunk9</span> <span class='kw'>&lt;-</span> <span class='fu'>sample</span>(<span class='fl'>101L</span>:<span class='fl'>200L</span>, <span class='fl'>3L</span>)
-<span class='no'>chunk10</span> <span class='kw'>&lt;-</span> <span class='fu'>sample</span>(<span class='fl'>101L</span>:<span class='fl'>200L</span>, <span class='fl'>3L</span>)
-<span class='no'>chunk11</span> <span class='kw'>&lt;-</span> <span class='fu'>sample</span>(<span class='fl'>101L</span>:<span class='fl'>200L</span>, <span class='fl'>3L</span>)
-<span class='no'>chunk12</span> <span class='kw'>&lt;-</span> <span class='fu'>sample</span>(<span class='fl'>101L</span>:<span class='fl'>200L</span>, <span class='fl'>3L</span>)
-<span class='no'>chunk13</span> <span class='kw'>&lt;-</span> <span class='fu'>sample</span>(<span class='fl'>101L</span>:<span class='fl'>200L</span>, <span class='fl'>3L</span>)
-<span class='no'>chunk14</span> <span class='kw'>&lt;-</span> <span class='fu'>sample</span>(<span class='fl'>101L</span>:<span class='fl'>200L</span>, <span class='fl'>3L</span>)
-<span class='no'>chunk15</span> <span class='kw'>&lt;-</span> <span class='fu'>sample</span>(<span class='fl'>201L</span>:<span class='fl'>300L</span>, <span class='fl'>3L</span>)
-<span class='no'>chunk16</span> <span class='kw'>&lt;-</span> <span class='fu'>sample</span>(<span class='fl'>201L</span>:<span class='fl'>300L</span>, <span class='fl'>3L</span>)
-<span class='no'>chunk17</span> <span class='kw'>&lt;-</span> <span class='fu'>sample</span>(<span class='fl'>201L</span>:<span class='fl'>300L</span>, <span class='fl'>3L</span>)
-<span class='no'>chunk18</span> <span class='kw'>&lt;-</span> <span class='fu'>sample</span>(<span class='fl'>201L</span>:<span class='fl'>300L</span>, <span class='fl'>3L</span>)
-<span class='no'>chunk19</span> <span class='kw'>&lt;-</span> <span class='fu'>sample</span>(<span class='fl'>201L</span>:<span class='fl'>300L</span>, <span class='fl'>3L</span>)
-<span class='no'>chunk20</span> <span class='kw'>&lt;-</span> <span class='fu'>sample</span>(<span class='fl'>201L</span>:<span class='fl'>300L</span>, <span class='fl'>3L</span>)
-<span class='no'>chks</span> <span class='kw'>&lt;-</span> <span class='no'>x</span>[<span class='fu'>c</span>(
-  <span class='no'>chunk1</span>, <span class='no'>chunk2</span>, <span class='no'>chunk3</span>, <span class='no'>chunk4</span>, <span class='no'>chunk5</span>,
-  <span class='no'>chunk6</span>, <span class='no'>chunk7</span>, <span class='no'>chunk8</span>, <span class='no'>chunk9</span>, <span class='no'>chunk10</span>,
-  <span class='no'>chunk11</span>, <span class='no'>chunk12</span>, <span class='no'>chunk13</span>, <span class='no'>chunk14</span>, <span class='no'>chunk15</span>,
-  <span class='no'>chunk16</span>, <span class='no'>chunk17</span>, <span class='no'>chunk18</span>, <span class='no'>chunk19</span>, <span class='no'>chunk20</span>
-), ]
-<span class='no'>chunks</span> <span class='kw'>&lt;-</span> <span class='fu'>list</span>(
-  <span class='no'>chunk1</span>, <span class='no'>chunk2</span>, <span class='no'>chunk3</span>, <span class='no'>chunk4</span>, <span class='no'>chunk5</span>,
-  <span class='no'>chunk6</span>, <span class='no'>chunk7</span>, <span class='no'>chunk8</span>, <span class='no'>chunk9</span>, <span class='no'>chunk10</span>,
-  <span class='no'>chunk11</span>, <span class='no'>chunk12</span>, <span class='no'>chunk13</span>, <span class='no'>chunk14</span>, <span class='no'>chunk15</span>,
-  <span class='no'>chunk16</span>, <span class='no'>chunk17</span>, <span class='no'>chunk18</span>, <span class='no'>chunk19</span>, <span class='no'>chunk20</span>
-)
+<span class='co'># generate synthetic chunklets</span>
+<span class='no'>chunks</span> <span class='kw'>&lt;-</span> <span class='fu'>vector</span>(<span class='st'>"list"</span>, <span class='fl'>1000</span>)
+<span class='kw'>for</span> (<span class='no'>i</span> <span class='kw'>in</span> <span class='fl'>1</span>:<span class='fl'>300</span>) <span class='no'>chunks</span><span class='kw'>[[</span><span class='no'>i</span>]] <span class='kw'>&lt;-</span> <span class='fu'>sample</span>(<span class='fl'>1L</span>:<span class='fl'>100L</span>, <span class='fl'>3L</span>)
+<span class='kw'>for</span> (<span class='no'>i</span> <span class='kw'>in</span> <span class='fl'>301</span>:<span class='fl'>600</span>) <span class='no'>chunks</span><span class='kw'>[[</span><span class='no'>i</span>]] <span class='kw'>&lt;-</span> <span class='fu'>sample</span>(<span class='fl'>101L</span>:<span class='fl'>200L</span>, <span class='fl'>3L</span>)
+<span class='kw'>for</span> (<span class='no'>i</span> <span class='kw'>in</span> <span class='fl'>601</span>:<span class='fl'>1000</span>) <span class='no'>chunks</span><span class='kw'>[[</span><span class='no'>i</span>]] <span class='kw'>&lt;-</span> <span class='fu'>sample</span>(<span class='fl'>201L</span>:<span class='fl'>300L</span>, <span class='fl'>3L</span>)
+
+<span class='no'>chks</span> <span class='kw'>&lt;-</span> <span class='no'>x</span>[<span class='fu'>unlist</span>(<span class='no'>chunks</span>), ]
 
 <span class='co'># make "chunklet" vector to feed the chunks argument</span>
 <span class='no'>chunksvec</span> <span class='kw'>&lt;-</span> <span class='fu'>rep</span>(-<span class='fl'>1L</span>, <span class='fu'>nrow</span>(<span class='no'>x</span>))
@@ -239,32 +212,27 @@ Machine Learning (ICML2003)</em></p>
   }
 }
 
-<span class='co'># chunklets for the RCA algorithm</span>
-<span class='fu'>plot</span>(<span class='no'>chks</span>[, <span class='fl'>1L</span>], <span class='no'>chks</span>[, <span class='fl'>2L</span>],
-  <span class='kw'>col</span> <span class='kw'>=</span> <span class='fu'>rep</span>(<span class='fl'>1L</span>:<span class='fl'>20L</span>, <span class='kw'>each</span> <span class='kw'>=</span> <span class='fl'>3L</span>),
-  <span class='kw'>pch</span> <span class='kw'>=</span> <span class='fu'>rep</span>(<span class='fl'>0L</span>:<span class='fl'>19L</span>, <span class='kw'>each</span> <span class='kw'>=</span> <span class='fl'>3L</span>)
-)</div><div class='img'><img src='rca-3.png' alt='' width='700' height='433' /></div><div class='input'>
-<span class='co'># RCA suggested transformation of the data</span>
-<span class='fu'>rca</span>(<span class='no'>x</span>, <span class='no'>chunksvec</span>)$<span class='no'>RCA</span></div><div class='output co'>#&gt;           [,1]       [,2]
-#&gt; [1,] -2.924488 -0.6289097
-#&gt; [2,] -0.853613  2.1546520</div><div class='input'>
-<span class='co'># RCA suggested Mahalanobis matrix</span>
-<span class='fu'>rca</span>(<span class='no'>x</span>, <span class='no'>chunksvec</span>)$<span class='no'>B</span></div><div class='output co'>#&gt;          [,1]    [,2]
-#&gt; [1,] 8.948159 1.14130
-#&gt; [2,] 1.141300 5.37118</div><div class='input'>
-<span class='co'># whitening transformation applied to the  chunklets</span>
-<span class='no'>chkTransformed</span> <span class='kw'>&lt;-</span> <span class='fu'>as.matrix</span>(<span class='no'>chks</span>) <span class='kw'>%*%</span> <span class='fu'>rca</span>(<span class='no'>x</span>, <span class='no'>chunksvec</span>)$<span class='no'>RCA</span>
+<span class='co'># relevant component analysis</span>
+<span class='no'>rcs</span> <span class='kw'>&lt;-</span> <span class='fu'>rca</span>(<span class='no'>x</span>, <span class='no'>chunksvec</span>)
 
-<span class='fu'>plot</span>(<span class='no'>chkTransformed</span>[, <span class='fl'>1L</span>], <span class='no'>chkTransformed</span>[, <span class='fl'>2L</span>],
-  <span class='kw'>col</span> <span class='kw'>=</span> <span class='fu'>rep</span>(<span class='fl'>1L</span>:<span class='fl'>20L</span>, <span class='kw'>each</span> <span class='kw'>=</span> <span class='fl'>3L</span>),
-  <span class='kw'>pch</span> <span class='kw'>=</span> <span class='fu'>rep</span>(<span class='fl'>0L</span>:<span class='fl'>19L</span>, <span class='kw'>each</span> <span class='kw'>=</span> <span class='fl'>3L</span>)
-)</div><div class='img'><img src='rca-4.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='co'># learned transformation of the data</span>
+<span class='no'>rcs</span>$<span class='no'>RCA</span></div><div class='output co'>#&gt;           [,1]       [,2]
+#&gt; [1,] -2.217453 -0.9700651
+#&gt; [2,] -1.346209  1.5978746</div><div class='input'>
+<span class='co'># learned Mahalanobis matrix</span>
+<span class='no'>rcs</span>$<span class='no'>B</span></div><div class='output co'>#&gt;          [,1]     [,2]
+#&gt; [1,] 5.858122 1.435112
+#&gt; [2,] 1.435112 4.365482</div><div class='input'>
+<span class='co'># whitening transformation applied to the chunklets</span>
+<span class='no'>chkTransformed</span> <span class='kw'>&lt;-</span> <span class='fu'>as.matrix</span>(<span class='no'>chks</span>) <span class='kw'>%*%</span> <span class='no'>rcs</span>$<span class='no'>RCA</span>
+
 <span class='co'># original data after applying RCA transformation</span>
-<span class='no'>xnew</span> <span class='kw'>&lt;-</span> <span class='fu'>rca</span>(<span class='no'>x</span>, <span class='no'>chunksvec</span>)$<span class='no'>newX</span>
+<span class='co'># easier to classify - using only horizontal lines</span>
+<span class='no'>xnew</span> <span class='kw'>&lt;-</span> <span class='no'>rcs</span>$<span class='no'>newX</span>
 <span class='fu'>plot</span>(<span class='no'>xnew</span>[, <span class='fl'>1L</span>], <span class='no'>xnew</span>[, <span class='fl'>2L</span>],
   <span class='kw'>bg</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"#E41A1C"</span>, <span class='st'>"#377EB8"</span>, <span class='st'>"#4DAF4A"</span>)[<span class='fu'>gl</span>(<span class='no'>n</span>, <span class='no'>k</span>)],
   <span class='kw'>pch</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fu'>rep</span>(<span class='fl'>22</span>, <span class='no'>k</span>), <span class='fu'>rep</span>(<span class='fl'>21</span>, <span class='no'>k</span>), <span class='fu'>rep</span>(<span class='fl'>25</span>, <span class='no'>k</span>))
-)</div><div class='img'><img src='rca-5.png' alt='' width='700' height='433' /></div></pre>
+)</div><div class='img'><img src='rca-2.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
