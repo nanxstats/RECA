@@ -65,9 +65,9 @@ set.seed(42)
 k <- 100L # sample size of each class
 n <- 3L # specify how many classes
 N <- k * n # total sample size
-x1 <- mvrnorm(k, mu = c(-8, 6), matrix(c(15, 1, 2, 10), ncol = 2))
-x2 <- mvrnorm(k, mu = c(0, 0), matrix(c(15, 0.5, 2, 10), ncol = 2))
-x3 <- mvrnorm(k, mu = c(8, -6), matrix(c(15, 1, 2, 10), ncol = 2))
+x1 <- mvrnorm(k, mu = c(-16, 8), matrix(c(15, 1, 2, 10), ncol = 2))
+x2 <- mvrnorm(k, mu = c(0, 0), matrix(c(15, 1, 2, 10), ncol = 2))
+x3 <- mvrnorm(k, mu = c(16, -8), matrix(c(15, 1, 2, 10), ncol = 2))
 x <- as.data.frame(rbind(x1, x2, x3)) # predictors
 y <- gl(n, k) # response
 
@@ -79,10 +79,10 @@ plot(x[, 1L], x[, 2L],
 )
 
 # generate synthetic chunklets
-chunks <- vector("list", 1000)
-for (i in 1:300) chunks[[i]] <- sample(1L:100L, 3L)
-for (i in 301:600) chunks[[i]] <- sample(101L:200L, 3L)
-for (i in 601:1000) chunks[[i]] <- sample(201L:300L, 3L)
+chunks <- vector("list", 300)
+for (i in 1:100) chunks[[i]] <- sample(1L:100L, 10L)
+for (i in 101:200) chunks[[i]] <- sample(101L:200L, 10L)
+for (i in 201:300) chunks[[i]] <- sample(201L:300L, 10L)
 
 chks <- x[unlist(chunks), ]
 
@@ -100,7 +100,7 @@ rcs <- rca(x, chunksvec)
 # learned transformation of the data
 rcs$RCA
 
-# learned Mahalanobis matrix
+# learned Mahalanobis distance metric
 rcs$B
 
 # whitening transformation applied to the chunklets
