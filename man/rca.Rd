@@ -77,6 +77,8 @@ plot(x[, 1L], x[, 2L],
   bg = c("#E41A1C", "#377EB8", "#4DAF4A")[y],
   pch = rep(c(22, 21, 25), each = k)
 )
+abline(a = -10, b = 1, lty = 2)
+abline(a = 12, b = 1, lty = 2)
 
 # generate synthetic chunklets
 chunks <- vector("list", 300)
@@ -113,6 +115,8 @@ plot(xnew[, 1L], xnew[, 2L],
   bg = c("#E41A1C", "#377EB8", "#4DAF4A")[gl(n, k)],
   pch = c(rep(22, k), rep(21, k), rep(25, k))
 )
+abline(a = -15, b = 0, lty = 2)
+abline(a = 16, b = 0, lty = 2)
 }
 \references{
 Aharon Bar-Hillel, Tomer Hertz, Noam Shental, and Daphna Weinshall (2003).
