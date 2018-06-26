@@ -3,9 +3,10 @@
 #' The RECA package offers an R implementation for
 #' Relevant Component Analysis (RCA).
 #'
-#' \tabular{ll}{ Package: \tab RECA\cr
+#' \tabular{ll}{
+#' Package: \tab RECA\cr
 #' Type: \tab Package\cr
-#' License: \tab GPL-3\cr }
+#' License: \tab GPL-3}
 #'
 #' @name RECA-package
 #' @docType package
