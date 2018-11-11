@@ -1,4 +1,4 @@
-# RECA  <a href="https://nanx.me/RECA/"><img src="https://nanx.me/images/project-RECA.png" align="right" alt="logo" height="180" width="180" /></a>
+# RECA  <a href="https://nanx.me/RECA/"><img src="https://i.imgur.com/IhWSA0f.png" align="right" alt="logo" height="180" width="180" /></a>
 
 [![Build Status](https://travis-ci.org/road2stat/RECA.svg?branch=master)](https://travis-ci.org/road2stat/RECA)
 [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/road2stat/RECA?branch=master&svg=true)](https://ci.appveyor.com/project/road2stat/RECA)
