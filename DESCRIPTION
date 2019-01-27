@@ -15,4 +15,4 @@ BugReports: https://github.com/road2stat/RECA/issues
 Suggests:
     MASS
 Encoding: UTF-8
-RoxygenNote: 6.1.0
+RoxygenNote: 6.1.1

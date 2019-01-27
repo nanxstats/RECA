@@ -2,19 +2,25 @@
 % Please edit documentation in R/RECA-package.R
 \docType{package}
 \name{RECA-package}
+\alias{RECA}
 \alias{RECA-package}
-\title{Relevant Component Analysis}
+\title{RECA: Relevant Component Analysis for Supervised Distance Metric Learning}
 \description{
-The RECA package offers an R implementation for
-Relevant Component Analysis (RCA).
+Relevant Component Analysis (RCA) tries to find a linear
+    transformation of the feature space such that the effect of irrelevant
+    variability is reduced in the transformed space.
 }
-\details{
-\tabular{ll}{
-Package: \tab RECA\cr
-Type: \tab Package\cr
-License: \tab GPL-3}
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://nanx.me/RECA/}
+  \item \url{https://github.com/road2stat/RECA}
+  \item Report bugs at \url{https://github.com/road2stat/RECA/issues}
 }
-\note{
-Bug reports and feature requests can be sent to
-\url{https://github.com/road2stat/RECA/issues}.
+
 }
+\author{
+\strong{Maintainer}: Nan Xiao \email{me@nanx.me} (0000-0002-0250-5673)
+
+}
+\keyword{internal}
