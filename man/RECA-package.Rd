@@ -14,8 +14,8 @@ Relevant Component Analysis (RCA) tries to find a linear
 Useful links:
 \itemize{
   \item \url{https://nanx.me/RECA/}
-  \item \url{https://github.com/road2stat/RECA}
-  \item Report bugs at \url{https://github.com/road2stat/RECA/issues}
+  \item \url{https://github.com/nanxstats/RECA}
+  \item Report bugs at \url{https://github.com/nanxstats/RECA/issues}
 }
 
 }

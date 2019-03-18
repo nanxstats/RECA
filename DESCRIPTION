@@ -10,8 +10,8 @@ Description: Relevant Component Analysis (RCA) tries to find a linear
     transformation of the feature space such that the effect of irrelevant
     variability is reduced in the transformed space.
 License: GPL-3 | file LICENSE
-URL: https://nanx.me/RECA/, https://github.com/road2stat/RECA
-BugReports: https://github.com/road2stat/RECA/issues
+URL: https://nanx.me/RECA/, https://github.com/nanxstats/RECA
+BugReports: https://github.com/nanxstats/RECA/issues
 Suggests:
     MASS
 Encoding: UTF-8
