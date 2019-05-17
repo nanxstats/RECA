@@ -22,12 +22,6 @@ Or try the development version on GitHub:
 devtools::install_github("nanxstats/RECA")
 ```
 
-## Links
-
-- Website: https://nanx.me/RECA/
-- CRAN: https://cran.r-project.org/package=RECA
-- GitHub: https://github.com/nanxstats/RECA
-
 ## Contribute
 
 To contribute to this project, please take a look at the [Contributing Guidelines](CONTRIBUTING.md) first. Please note that this project is released with a [Contributor Code of Conduct](CONDUCT.md). By participating in this project you agree to abide by its terms.
