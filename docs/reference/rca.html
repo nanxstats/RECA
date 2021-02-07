@@ -8,6 +8,13 @@
 
 <title>Relevant Component Analysis — rca • RECA</title>
 
+<!-- favicons -->
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
@@ -49,6 +56,7 @@ representation, alternatively, a Mahalanobis metric over the data space.
 The new representation is known to be optimal in an information
 theoretic sense under a constraint of keeping equivalent data
 points close to each other." />
+<meta property="og:image" content="/logo.png" />
 
 
 
@@ -88,7 +96,7 @@ points close to each other." />
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -99,7 +107,7 @@ points close to each other." />
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/nanxstats/RECA/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -131,7 +139,7 @@ theoretic sense under a constraint of keeping equivalent data
 points close to each other.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>rca</span>(<span class='no'>x</span>, <span class='no'>chunks</span>, <span class='kw'>useD</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>rca</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>chunks</span>, useD <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -190,62 +198,73 @@ same class and might belong to different classes.</p>
 Learning Distance Functions using Equivalence Relations.
 <em>Proceedings of 20th International Conference on
 Machine Learning (ICML2003)</em></p>
+    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+
+    <p>Nan Xiao &lt;<a href='https://nanx.me'>https://nanx.me</a>&gt;</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='st'>"MASS"</span>) <span class='co'># generate synthetic multivariate normal data</span>
-<span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span>(<span class='fl'>42</span>)
-<span class='no'>k</span> <span class='kw'>&lt;-</span> <span class='fl'>100L</span> <span class='co'># sample size of each class</span>
-<span class='no'>n</span> <span class='kw'>&lt;-</span> <span class='fl'>3L</span> <span class='co'># specify how many classes</span>
-<span class='no'>N</span> <span class='kw'>&lt;-</span> <span class='no'>k</span> * <span class='no'>n</span> <span class='co'># total sample size</span>
-<span class='no'>x1</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/MASS/man/mvrnorm.html'>mvrnorm</a></span>(<span class='no'>k</span>, <span class='kw'>mu</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(-<span class='fl'>16</span>, <span class='fl'>8</span>), <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>15</span>, <span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>10</span>), <span class='kw'>ncol</span> <span class='kw'>=</span> <span class='fl'>2</span>))
-<span class='no'>x2</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/MASS/man/mvrnorm.html'>mvrnorm</a></span>(<span class='no'>k</span>, <span class='kw'>mu</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>0</span>), <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>15</span>, <span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>10</span>), <span class='kw'>ncol</span> <span class='kw'>=</span> <span class='fl'>2</span>))
-<span class='no'>x3</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/MASS/man/mvrnorm.html'>mvrnorm</a></span>(<span class='no'>k</span>, <span class='kw'>mu</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>16</span>, -<span class='fl'>8</span>), <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>15</span>, <span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>10</span>), <span class='kw'>ncol</span> <span class='kw'>=</span> <span class='fl'>2</span>))
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/as.data.frame.html'>as.data.frame</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/cbind.html'>rbind</a></span>(<span class='no'>x1</span>, <span class='no'>x2</span>, <span class='no'>x3</span>)) <span class='co'># predictors</span>
-<span class='no'>y</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/gl.html'>gl</a></span>(<span class='no'>n</span>, <span class='no'>k</span>) <span class='co'># response</span>
+    <pre class="examples"><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='st'><a href='http://www.stats.ox.ac.uk/pub/MASS4/'>"MASS"</a></span><span class='op'>)</span> <span class='co'># generate synthetic multivariate normal data</span>
+<span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>42</span><span class='op'>)</span>
+<span class='va'>k</span> <span class='op'>&lt;-</span> <span class='fl'>100L</span> <span class='co'># sample size of each class</span>
+<span class='va'>n</span> <span class='op'>&lt;-</span> <span class='fl'>3L</span> <span class='co'># specify how many classes</span>
+<span class='va'>N</span> <span class='op'>&lt;-</span> <span class='va'>k</span> <span class='op'>*</span> <span class='va'>n</span> <span class='co'># total sample size</span>
+<span class='va'>x1</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/MASS/man/mvrnorm.html'>mvrnorm</a></span><span class='op'>(</span><span class='va'>k</span>, mu <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>16</span>, <span class='fl'>8</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>15</span>, <span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>10</span><span class='op'>)</span>, ncol <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span><span class='op'>)</span>
+<span class='va'>x2</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/MASS/man/mvrnorm.html'>mvrnorm</a></span><span class='op'>(</span><span class='va'>k</span>, mu <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>0</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>15</span>, <span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>10</span><span class='op'>)</span>, ncol <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span><span class='op'>)</span>
+<span class='va'>x3</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/MASS/man/mvrnorm.html'>mvrnorm</a></span><span class='op'>(</span><span class='va'>k</span>, mu <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>16</span>, <span class='op'>-</span><span class='fl'>8</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>15</span>, <span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>10</span><span class='op'>)</span>, ncol <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span><span class='op'>)</span>
+<span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/as.data.frame.html'>as.data.frame</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/cbind.html'>rbind</a></span><span class='op'>(</span><span class='va'>x1</span>, <span class='va'>x2</span>, <span class='va'>x3</span><span class='op'>)</span><span class='op'>)</span> <span class='co'># predictors</span>
+<span class='va'>y</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/gl.html'>gl</a></span><span class='op'>(</span><span class='va'>n</span>, <span class='va'>k</span><span class='op'>)</span> <span class='co'># response</span>
 
 <span class='co'># fully labeled data set with 3 classes</span>
 <span class='co'># need to use a line in 2D to classify</span>
-<span class='fu'><a href='https://rdrr.io/r/graphics/plot.html'>plot</a></span>(<span class='no'>x</span>[, <span class='fl'>1L</span>], <span class='no'>x</span>[, <span class='fl'>2L</span>],
-  <span class='kw'>bg</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"#E41A1C"</span>, <span class='st'>"#377EB8"</span>, <span class='st'>"#4DAF4A"</span>)[<span class='no'>y</span>],
-  <span class='kw'>pch</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>22</span>, <span class='fl'>21</span>, <span class='fl'>25</span>), <span class='kw'>each</span> <span class='kw'>=</span> <span class='no'>k</span>)
-)</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/graphics/abline.html'>abline</a></span>(<span class='kw'>a</span> <span class='kw'>=</span> -<span class='fl'>10</span>, <span class='kw'>b</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>lty</span> <span class='kw'>=</span> <span class='fl'>2</span>)</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/graphics/abline.html'>abline</a></span>(<span class='kw'>a</span> <span class='kw'>=</span> <span class='fl'>12</span>, <span class='kw'>b</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>lty</span> <span class='kw'>=</span> <span class='fl'>2</span>)</div><div class='img'><img src='rca-1.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>[</span>, <span class='fl'>1L</span><span class='op'>]</span>, <span class='va'>x</span><span class='op'>[</span>, <span class='fl'>2L</span><span class='op'>]</span>,
+  bg <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"#E41A1C"</span>, <span class='st'>"#377EB8"</span>, <span class='st'>"#4DAF4A"</span><span class='op'>)</span><span class='op'>[</span><span class='va'>y</span><span class='op'>]</span>,
+  pch <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>22</span>, <span class='fl'>21</span>, <span class='fl'>25</span><span class='op'>)</span>, each <span class='op'>=</span> <span class='va'>k</span><span class='op'>)</span>
+<span class='op'>)</span>
+</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/graphics/abline.html'>abline</a></span><span class='op'>(</span>a <span class='op'>=</span> <span class='op'>-</span><span class='fl'>10</span>, b <span class='op'>=</span> <span class='fl'>1</span>, lty <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span>
+</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/graphics/abline.html'>abline</a></span><span class='op'>(</span>a <span class='op'>=</span> <span class='fl'>12</span>, b <span class='op'>=</span> <span class='fl'>1</span>, lty <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span>
+</div><div class='img'><img src='rca-1.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'># generate synthetic chunklets</span>
-<span class='no'>chunks</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/vector.html'>vector</a></span>(<span class='st'>"list"</span>, <span class='fl'>300</span>)
-<span class='kw'>for</span> (<span class='no'>i</span> <span class='kw'>in</span> <span class='fl'>1</span>:<span class='fl'>100</span>) <span class='no'>chunks</span><span class='kw'>[[</span><span class='no'>i</span>]] <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span>(<span class='fl'>1L</span>:<span class='fl'>100L</span>, <span class='fl'>10L</span>)
-<span class='kw'>for</span> (<span class='no'>i</span> <span class='kw'>in</span> <span class='fl'>101</span>:<span class='fl'>200</span>) <span class='no'>chunks</span><span class='kw'>[[</span><span class='no'>i</span>]] <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span>(<span class='fl'>101L</span>:<span class='fl'>200L</span>, <span class='fl'>10L</span>)
-<span class='kw'>for</span> (<span class='no'>i</span> <span class='kw'>in</span> <span class='fl'>201</span>:<span class='fl'>300</span>) <span class='no'>chunks</span><span class='kw'>[[</span><span class='no'>i</span>]] <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span>(<span class='fl'>201L</span>:<span class='fl'>300L</span>, <span class='fl'>10L</span>)
+<span class='va'>chunks</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/vector.html'>vector</a></span><span class='op'>(</span><span class='st'>"list"</span>, <span class='fl'>300</span><span class='op'>)</span>
+<span class='kw'>for</span> <span class='op'>(</span><span class='va'>i</span> <span class='kw'>in</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>100</span><span class='op'>)</span> <span class='va'>chunks</span><span class='op'>[[</span><span class='va'>i</span><span class='op'>]</span><span class='op'>]</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span><span class='op'>(</span><span class='fl'>1L</span><span class='op'>:</span><span class='fl'>100L</span>, <span class='fl'>10L</span><span class='op'>)</span>
+<span class='kw'>for</span> <span class='op'>(</span><span class='va'>i</span> <span class='kw'>in</span> <span class='fl'>101</span><span class='op'>:</span><span class='fl'>200</span><span class='op'>)</span> <span class='va'>chunks</span><span class='op'>[[</span><span class='va'>i</span><span class='op'>]</span><span class='op'>]</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span><span class='op'>(</span><span class='fl'>101L</span><span class='op'>:</span><span class='fl'>200L</span>, <span class='fl'>10L</span><span class='op'>)</span>
+<span class='kw'>for</span> <span class='op'>(</span><span class='va'>i</span> <span class='kw'>in</span> <span class='fl'>201</span><span class='op'>:</span><span class='fl'>300</span><span class='op'>)</span> <span class='va'>chunks</span><span class='op'>[[</span><span class='va'>i</span><span class='op'>]</span><span class='op'>]</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span><span class='op'>(</span><span class='fl'>201L</span><span class='op'>:</span><span class='fl'>300L</span>, <span class='fl'>10L</span><span class='op'>)</span>
 
-<span class='no'>chks</span> <span class='kw'>&lt;-</span> <span class='no'>x</span>[<span class='fu'><a href='https://rdrr.io/r/base/unlist.html'>unlist</a></span>(<span class='no'>chunks</span>), ]
+<span class='va'>chks</span> <span class='op'>&lt;-</span> <span class='va'>x</span><span class='op'>[</span><span class='fu'><a href='https://rdrr.io/r/base/unlist.html'>unlist</a></span><span class='op'>(</span><span class='va'>chunks</span><span class='op'>)</span>, <span class='op'>]</span>
 
 <span class='co'># make "chunklet" vector to feed the chunks argument</span>
-<span class='no'>chunksvec</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(-<span class='fl'>1L</span>, <span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>nrow</a></span>(<span class='no'>x</span>))
-<span class='kw'>for</span> (<span class='no'>i</span> <span class='kw'>in</span> <span class='fl'>1L</span>:<span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span>(<span class='no'>chunks</span>)) {
-  <span class='kw'>for</span> (<span class='no'>j</span> <span class='kw'>in</span> <span class='fl'>1L</span>:<span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span>(<span class='no'>chunks</span><span class='kw'>[[</span><span class='no'>i</span>]])) {
-    <span class='no'>chunksvec</span>[<span class='no'>chunks</span><span class='kw'>[[</span><span class='no'>i</span>]][<span class='no'>j</span>]] <span class='kw'>&lt;-</span> <span class='no'>i</span>
-  }
-}
+<span class='va'>chunksvec</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>1L</span>, <span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>nrow</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span><span class='op'>)</span>
+<span class='kw'>for</span> <span class='op'>(</span><span class='va'>i</span> <span class='kw'>in</span> <span class='fl'>1L</span><span class='op'>:</span><span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span><span class='op'>(</span><span class='va'>chunks</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>{</span>
+  <span class='kw'>for</span> <span class='op'>(</span><span class='va'>j</span> <span class='kw'>in</span> <span class='fl'>1L</span><span class='op'>:</span><span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span><span class='op'>(</span><span class='va'>chunks</span><span class='op'>[[</span><span class='va'>i</span><span class='op'>]</span><span class='op'>]</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>{</span>
+    <span class='va'>chunksvec</span><span class='op'>[</span><span class='va'>chunks</span><span class='op'>[[</span><span class='va'>i</span><span class='op'>]</span><span class='op'>]</span><span class='op'>[</span><span class='va'>j</span><span class='op'>]</span><span class='op'>]</span> <span class='op'>&lt;-</span> <span class='va'>i</span>
+  <span class='op'>}</span>
+<span class='op'>}</span>
 
 <span class='co'># relevant component analysis</span>
-<span class='no'>rcs</span> <span class='kw'>&lt;-</span> <span class='fu'>rca</span>(<span class='no'>x</span>, <span class='no'>chunksvec</span>)
+<span class='va'>rcs</span> <span class='op'>&lt;-</span> <span class='fu'>rca</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>chunksvec</span><span class='op'>)</span>
 
 <span class='co'># learned transformation of the data</span>
-<span class='no'>rcs</span>$<span class='no'>RCA</span></div><div class='output co'>#&gt;           [,1]       [,2]
+<span class='va'>rcs</span><span class='op'>$</span><span class='va'>RCA</span>
+</div><div class='output co'>#&gt;           [,1]       [,2]
 #&gt; [1,] -3.147411 -0.7864477
 #&gt; [2,] -1.026338  2.4117535</div><div class='input'>
 <span class='co'># learned Mahalanobis distance metric</span>
-<span class='no'>rcs</span>$<span class='no'>B</span></div><div class='output co'>#&gt;          [,1]     [,2]
+<span class='va'>rcs</span><span class='op'>$</span><span class='va'>B</span>
+</div><div class='output co'>#&gt;          [,1]     [,2]
 #&gt; [1,] 10.52470 1.333590
 #&gt; [2,]  1.33359 6.869925</div><div class='input'>
 <span class='co'># whitening transformation applied to the chunklets</span>
-<span class='no'>chkTransformed</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>as.matrix</a></span>(<span class='no'>chks</span>) <span class='kw'>%*%</span> <span class='no'>rcs</span>$<span class='no'>RCA</span>
+<span class='va'>chkTransformed</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>as.matrix</a></span><span class='op'>(</span><span class='va'>chks</span><span class='op'>)</span> <span class='op'>%*%</span> <span class='va'>rcs</span><span class='op'>$</span><span class='va'>RCA</span>
 
 <span class='co'># original data after applying RCA transformation</span>
 <span class='co'># easier to classify - using only horizontal lines</span>
-<span class='no'>xnew</span> <span class='kw'>&lt;-</span> <span class='no'>rcs</span>$<span class='no'>newX</span>
-<span class='fu'><a href='https://rdrr.io/r/graphics/plot.html'>plot</a></span>(<span class='no'>xnew</span>[, <span class='fl'>1L</span>], <span class='no'>xnew</span>[, <span class='fl'>2L</span>],
-  <span class='kw'>bg</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"#E41A1C"</span>, <span class='st'>"#377EB8"</span>, <span class='st'>"#4DAF4A"</span>)[<span class='fu'><a href='https://rdrr.io/r/base/gl.html'>gl</a></span>(<span class='no'>n</span>, <span class='no'>k</span>)],
-  <span class='kw'>pch</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='fl'>22</span>, <span class='no'>k</span>), <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='fl'>21</span>, <span class='no'>k</span>), <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='fl'>25</span>, <span class='no'>k</span>))
-)</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/graphics/abline.html'>abline</a></span>(<span class='kw'>a</span> <span class='kw'>=</span> -<span class='fl'>15</span>, <span class='kw'>b</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>lty</span> <span class='kw'>=</span> <span class='fl'>2</span>)</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/graphics/abline.html'>abline</a></span>(<span class='kw'>a</span> <span class='kw'>=</span> <span class='fl'>16</span>, <span class='kw'>b</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>lty</span> <span class='kw'>=</span> <span class='fl'>2</span>)</div><div class='img'><img src='rca-2.png' alt='' width='700' height='433' /></div></pre>
+<span class='va'>xnew</span> <span class='op'>&lt;-</span> <span class='va'>rcs</span><span class='op'>$</span><span class='va'>newX</span>
+<span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>xnew</span><span class='op'>[</span>, <span class='fl'>1L</span><span class='op'>]</span>, <span class='va'>xnew</span><span class='op'>[</span>, <span class='fl'>2L</span><span class='op'>]</span>,
+  bg <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"#E41A1C"</span>, <span class='st'>"#377EB8"</span>, <span class='st'>"#4DAF4A"</span><span class='op'>)</span><span class='op'>[</span><span class='fu'><a href='https://rdrr.io/r/base/gl.html'>gl</a></span><span class='op'>(</span><span class='va'>n</span>, <span class='va'>k</span><span class='op'>)</span><span class='op'>]</span>,
+  pch <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='fl'>22</span>, <span class='va'>k</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='fl'>21</span>, <span class='va'>k</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='fl'>25</span>, <span class='va'>k</span><span class='op'>)</span><span class='op'>)</span>
+<span class='op'>)</span>
+</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/graphics/abline.html'>abline</a></span><span class='op'>(</span>a <span class='op'>=</span> <span class='op'>-</span><span class='fl'>15</span>, b <span class='op'>=</span> <span class='fl'>0</span>, lty <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span>
+</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/graphics/abline.html'>abline</a></span><span class='op'>(</span>a <span class='op'>=</span> <span class='fl'>16</span>, b <span class='op'>=</span> <span class='fl'>0</span>, lty <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span>
+</div><div class='img'><img src='rca-2.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -261,7 +280,7 @@ Machine Learning (ICML2003)</em></p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>
