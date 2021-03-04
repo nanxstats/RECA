@@ -1,7 +1,5 @@
 # RECA  <a href="https://nanx.me/RECA/"><img src="man/figures/logo.png" align="right" height="180" /></a>
 
-[![Build Status](https://travis-ci.org/nanxstats/RECA.svg?branch=master)](https://travis-ci.org/nanxstats/RECA)
-[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/nanxstats/RECA?branch=master&svg=true)](https://ci.appveyor.com/project/nanxstats/RECA)
 [![CRAN Version](https://www.r-pkg.org/badges/version/RECA)](https://cran.r-project.org/package=RECA)
 [![Downloads from the RStudio CRAN mirror](https://cranlogs.r-pkg.org/badges/RECA)](https://cranlogs.r-pkg.org/badges/RECA)
 
