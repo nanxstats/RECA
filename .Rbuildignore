@@ -4,3 +4,4 @@
 ^CONTRIBUTING\.md$
 ^pkgdown$
 ^docs$
+^\.github$
