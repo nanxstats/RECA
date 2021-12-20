@@ -1,6 +1,9 @@
-pandoc: 2.11.4
-pkgdown: 1.6.1
+pandoc: 2.16.2
+pkgdown: 2.0.1
 pkgdown_sha: ~
 articles: {}
-last_built: 2021-03-04T02:31Z
+last_built: 2021-12-20T22:17Z
+urls:
+  reference: https://nanx.me/RECA/reference
+  article: https://nanx.me/RECA/articles
 
