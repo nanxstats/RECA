@@ -1,4 +1,4 @@
-# RECA  <a href="https://nanx.me/RECA/"><img src="man/figures/logo.png" align="right" height="180" /></a>
+# RECA <img src="man/figures/logo.png" align="right" width="120" />
 
 <!-- badges: start -->
 [![R-CMD-check](https://github.com/nanxstats/RECA/workflows/R-CMD-check/badge.svg)](https://github.com/nanxstats/RECA/actions)
