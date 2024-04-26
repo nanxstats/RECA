@@ -15,4 +15,4 @@ BugReports: https://github.com/nanxstats/RECA/issues
 Suggests:
     MASS
 Encoding: UTF-8
-RoxygenNote: 7.1.2
+RoxygenNote: 7.3.1

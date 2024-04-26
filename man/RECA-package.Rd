@@ -6,7 +6,7 @@
 \alias{RECA-package}
 \title{RECA: Relevant Component Analysis for Supervised Distance Metric Learning}
 \description{
-\if{html}{\figure{logo.png}{options: align='right' alt='logo' width='120'}}
+\if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
 
 Relevant Component Analysis (RCA) tries to find a linear transformation of the feature space such that the effect of irrelevant variability is reduced in the transformed space.
 }
