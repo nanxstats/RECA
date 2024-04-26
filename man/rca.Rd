@@ -7,15 +7,15 @@
 rca(x, chunks, useD = NULL)
 }
 \arguments{
-\item{x}{\code{n * d} matrix or data frame of original data.}
+\item{x}{A \code{n * d} matrix or data frame of original data.}
 
-\item{chunks}{a vector of size \code{N} describing the chunklets:
+\item{chunks}{A vector of size \code{N} describing the chunklets:
 \code{-1} in the \code{i}-th place says that point \code{i} does not
 belong to any chunklet; integer \code{j} in place \code{i} says
 that point \code{i} belongs to chunklet \code{j};
 The chunklets indexes should be \code{1:number-of-chunklets}.}
 
-\item{useD}{optional. When not given, RCA is done in the
+\item{useD}{Optional. Default is \code{NULL}: RCA is done in the
 original dimension and \code{B} is full rank. When \code{useD} is given,
 RCA is preceded by constraints based LDA which reduces
 the dimension to \code{useD}. \code{B} in this case is of rank \code{useD}.}
@@ -25,15 +25,15 @@ A list of the RCA results:
 \itemize{
 \item \code{B}: The RCA suggested Mahalanobis matrix.
 Distances between data points \code{x1}, \code{x2} should be
-computed by \code{(x2 - x1)^T * B * (x2 - x1)}
+computed by \code{(x2 - x1)^T * B * (x2 - x1)}.
 \item \code{RCA}: The RCA suggested transformation of the data.
-The data should be transformed by \code{RCA * data}
+The data should be transformed by \code{RCA * data}.
 \item \code{newX}: The data after the RCA transformation.
-\code{newX = data * RCA}
+\code{newX = data * RCA}.
 }
 }
 \description{
-\code{rca} performs relevant component analysis (RCA) for the given data.
+Performs relevant component analysis (RCA) for the given data.
 It takes a data set and a set of positive constraints as arguments
 and returns a linear transformation of the data space into better
 representation, alternatively, a Mahalanobis metric over the data space.
@@ -50,29 +50,31 @@ space (where one can use the Euclidean metric) is preferred, the second
 returned argument is sufficient. Using \code{A} and \code{B} are equivalent
 in the following sense:
 
-if \code{y1 = A * x1}, \code{y2 = A * y2}  then
+if \code{y1 = A * x1}, \code{y2 = A * y2}, then
 
 \code{(x2 - x1)^T * B * (x2 - x1) = (y2 - y1)^T * (y2 - y1)}
 }
 \note{
 Note that any different sets of instances (chunklets),
-e.g. \code{{1, 3, 7}} and \code{{4, 6}}, might belong to the
-same class and might belong to different classes.
+for example, \verb{\{1, 3, 7\}} and \verb{\{4, 6\}}, might belong to
+the same class and might belong to different classes.
 }
 \examples{
-library("MASS") # generate synthetic multivariate normal data
+library("MASS")
+
+# Generate synthetic multivariate normal data
 set.seed(42)
-k <- 100L # sample size of each class
-n <- 3L # specify how many classes
-N <- k * n # total sample size
+k <- 100L # Sample size of each class
+n <- 3L # Specify how many classes
+N <- k * n # Total sample size
 x1 <- mvrnorm(k, mu = c(-16, 8), matrix(c(15, 1, 2, 10), ncol = 2))
 x2 <- mvrnorm(k, mu = c(0, 0), matrix(c(15, 1, 2, 10), ncol = 2))
 x3 <- mvrnorm(k, mu = c(16, -8), matrix(c(15, 1, 2, 10), ncol = 2))
-x <- as.data.frame(rbind(x1, x2, x3)) # predictors
-y <- gl(n, k) # response
+x <- as.data.frame(rbind(x1, x2, x3)) # Predictors
+y <- gl(n, k) # Response
 
-# fully labeled data set with 3 classes
-# need to use a line in 2D to classify
+# Fully labeled data set with 3 classes,
+# need to use a line in 2D to classify.
 plot(x[, 1L], x[, 2L],
   bg = c("#E41A1C", "#377EB8", "#4DAF4A")[y],
   pch = rep(c(22, 21, 25), each = k)
@@ -80,7 +82,7 @@ plot(x[, 1L], x[, 2L],
 abline(a = -10, b = 1, lty = 2)
 abline(a = 12, b = 1, lty = 2)
 
-# generate synthetic chunklets
+# Generate synthetic chunklets
 chunks <- vector("list", 300)
 for (i in 1:100) chunks[[i]] <- sample(1L:100L, 10L)
 for (i in 101:200) chunks[[i]] <- sample(101L:200L, 10L)
@@ -88,7 +90,7 @@ for (i in 201:300) chunks[[i]] <- sample(201L:300L, 10L)
 
 chks <- x[unlist(chunks), ]
 
-# make "chunklet" vector to feed the chunks argument
+# Make "chunklet" vector to feed the chunks argument
 chunksvec <- rep(-1L, nrow(x))
 for (i in 1L:length(chunks)) {
   for (j in 1L:length(chunks[[i]])) {
@@ -96,20 +98,20 @@ for (i in 1L:length(chunks)) {
   }
 }
 
-# relevant component analysis
+# Relevant component analysis
 rcs <- rca(x, chunksvec)
 
-# learned transformation of the data
+# Learned transformation of the data
 rcs$RCA
 
-# learned Mahalanobis distance metric
+# Learned Mahalanobis distance metric
 rcs$B
 
-# whitening transformation applied to the chunklets
+# Whitening transformation applied to the chunklets
 chkTransformed <- as.matrix(chks) \%*\% rcs$RCA
 
-# original data after applying RCA transformation
-# easier to classify - using only horizontal lines
+# Original data after applying RCA transformation,
+# easier to classify - using only horizontal lines.
 xnew <- rcs$newX
 plot(xnew[, 1L], xnew[, 2L],
   bg = c("#E41A1C", "#377EB8", "#4DAF4A")[gl(n, k)],
@@ -121,9 +123,5 @@ abline(a = 16, b = 0, lty = 2)
 \references{
 Aharon Bar-Hillel, Tomer Hertz, Noam Shental, and Daphna Weinshall (2003).
 Learning Distance Functions using Equivalence Relations.
-\emph{Proceedings of 20th International Conference on
-Machine Learning (ICML2003)}
-}
-\author{
-Nan Xiao <\url{https://nanx.me}>
+\emph{Proceedings of 20th International Conference on Machine Learning (ICML2003)}.
 }
