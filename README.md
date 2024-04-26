@@ -1,7 +1,7 @@
 # RECA <img src="man/figures/logo.png" align="right" width="120" />
 
 <!-- badges: start -->
-[![R-CMD-check](https://github.com/nanxstats/RECA/workflows/R-CMD-check/badge.svg)](https://github.com/nanxstats/RECA/actions)
+[![R-CMD-check](https://github.com/nanxstats/RECA/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/nanxstats/RECA/actions/workflows/R-CMD-check.yaml)
 [![CRAN Version](https://www.r-pkg.org/badges/version/RECA)](https://cran.r-project.org/package=RECA)
 [![Downloads from the RStudio CRAN mirror](https://cranlogs.r-pkg.org/badges/RECA)](https://cranlogs.r-pkg.org/badges/RECA)
 <!-- badges: end -->
