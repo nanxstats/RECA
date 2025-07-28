@@ -10,7 +10,7 @@ Relevant Component Analysis (RCA) for supervised distance metric learning.
 
 ## Installation
 
-Install `RECA` from CRAN:
+Install RECA from CRAN:
 
 ```r
 install.packages("RECA")
