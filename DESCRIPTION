@@ -1,11 +1,9 @@
 Package: RECA
-Type: Package
 Title: Relevant Component Analysis for Supervised Distance Metric Learning
-Version: 1.7
+Version: 1.7.1
 Authors@R: c(
     person("Nan", "Xiao", email = "me@nanx.me", role = c("aut", "cre", "cph"),
     comment = c(ORCID = "0000-0002-0250-5673")))
-Maintainer: Nan Xiao <me@nanx.me>
 Description: Relevant Component Analysis (RCA) tries to find a linear
     transformation of the feature space such that the effect of irrelevant
     variability is reduced in the transformed space.
