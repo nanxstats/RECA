@@ -9,11 +9,11 @@ Maintainer: Nan Xiao <me@nanx.me>
 Description: Relevant Component Analysis (RCA) tries to find a linear
     transformation of the feature space such that the effect of irrelevant
     variability is reduced in the transformed space.
-License: GPL-3 | file LICENSE
+License: GPL (>= 3)
 URL: https://nanx.me/RECA/, https://github.com/nanxstats/RECA
 BugReports: https://github.com/nanxstats/RECA/issues
 Suggests:
     MASS
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.3.1
+RoxygenNote: 7.3.2
