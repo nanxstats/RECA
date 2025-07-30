@@ -5,7 +5,7 @@
 
 # RECA 1.7
 
-- Fix GitHub links due to handle change and update pkgdown wesbite.
+- Fix GitHub links due to handle change and update pkgdown website.
 
 # RECA 1.6
 
@@ -14,15 +14,18 @@
 
 # RECA 1.5
 
-TBA
+- Modernize package metadata with `Authors@R` field and ORCID.
+- Improve code examples with clearer synthetic data generation and better visualization.
+- Improve documentation formatting by removing excessive indentation in argument descriptions.
 
 # RECA 1.3
 
-TBA
+- Add explicit import for `stats::cov()` to comply with packaging best practices.
+- Minor documentation improvements with better formatting and cleaner argument descriptions.
 
 # RECA 1.1
 
-TBA
+- Update roxygen2 version and regenerate documentation.
 
 # RECA 1.0
 
